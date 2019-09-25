@@ -1,5 +1,5 @@
 # maerskslides
-Document class for slides with Maersk header
+Document class for Latex slides with Maersk header. The maerskslides class is based on the beamer class. 
 
 # Installation for Mac users
 1. Install Latex distribution (I use TeX Live)
