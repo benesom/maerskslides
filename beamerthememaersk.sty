@@ -1,0 +1,209 @@
+%%\setlength{\topmargin}{-30.6mm} 
+%%\setlength{\topsep}{-31mm} 
+%%\geometry{top=-31mm}
+
+\RequirePackage{textpos}
+\RequirePackage{graphicx}
+
+\newif\if@doTitleBackground
+\@doTitleBackgroundfalse
+\DeclareOption{titlebackground}{\@doTitleBackgroundtrue}
+
+\newif\if@doBackground
+\@doBackgroundfalse
+\DeclareOption{background}{\@doBackgroundtrue}
+
+\newif\if@doFooter
+\@doFootertrue
+\DeclareOption{nofooter}{\@doFooterfalse}
+
+\ProcessOptions
+
+\mode<presentation>
+\usecolortheme{maersk}
+
+\if@doTitleBackground%
+\setbeamertemplate{background}{
+  \ifnum\c@framenumber=0%
+  \tikz[overlay,remember
+  picture]\node[opacity=0.5]at (current page.center)
+  {\includegraphics[height=0.89\paperheight]{terminal}};
+  \else%  
+  \fi%
+}
+\fi
+
+ \newcommand{\watermark}[3]{\setbeamertemplate{background}{
+   \tikz[overlay,remember
+   picture]\node[opacity=#2]at (current page.center)
+   {\includegraphics[height=#3\paperheight]{#1}};
+ }}
+\newcommand{\nowatermark}{\setbeamertemplate{background}{}}
+\newenvironment<>{varblock}[2][\textwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+%%\setbeamertemplate{footline}{}
+\usebackgroundtemplate{}
+
+\setbeamertemplate{title page}{
+  \addtocounter{framenumber}{-1}
+  % \tikz[overlay,remember picture] 
+  % \node[opacity=1.0, at=(current page.north east),anchor=north east,inner sep=0pt] {
+  %   \includegraphics[]{maerskheader2}};
+  \begin{picture}(0,0)
+          
+    \put(-25,100){%
+      \color{beamer@maersk1}\rule{0.98\paperwidth}{2.5mm}\kern-1mm
+    }
+     \put(200,60){%
+     % TODO
+      \includegraphics[scale=0.3]{maerskheader}
+     }
+     \put(150,-100){%
+       {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic}
+     }
+     
+
+    \put(0,-120.7){%
+      \begin{minipage}[b][45mm][t]{\textwidth}
+        \usebeamerfont{title}{\color{beamer@maersk1}\huge\fontseries{bx}\selectfont\inserttitle}
+      \end{minipage}
+    }
+    \put(0,-165.7){%
+      \begin{minipage}[b][45mm][t]{\textwidth}
+        \usebeamerfont{title}{\color{beamer@maersk1}\fontseries{bx}\selectfont\insertsubtitle}
+      \end{minipage}
+    }
+    
+    \put(0,-188.7){%
+      \begin{minipage}[b][45mm][t]{226mm}
+        \usebeamerfont{date}{\color{beamer@maersk1}\insertdate\par}
+      \end{minipage}
+    }
+    \put(0,-200.7){%
+      \begin{minipage}[b][45mm][t]{226mm}
+        \usebeamerfont{author}{\color{beamer@maersk1}\insertauthor\par}
+      \end{minipage}
+    }
+  \end{picture}
+  \
+  \setbeamertemplate{footline}[frame number]
+
+
+  % \vbox{}
+  % \vfill
+  % \begingroup
+  %   \centering
+  %   \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+  %     \usebeamerfont{title}\inserttitle\par%
+  %     \ifx\insertsubtitle\@empty%
+  %     \else%
+  %       \vskip0.25em%
+  %       {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+  %     \fi%     
+  %   \end{beamercolorbox}%
+  %   \vskip1em\par
+  %   \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+  %     \usebeamerfont{author}\insertauthor
+  %   \end{beamercolorbox}
+  %   \begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+  %     \usebeamerfont{institute}\insertinstitute
+  %   \end{beamercolorbox}
+  %   \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+  %     \usebeamerfont{date}\insertdate
+  %   \end{beamercolorbox}\vskip0.5em
+  % \endgroup
+}
+
+
+\setbeamertemplate{navigation symbols}{}
+\defbeamertemplate{frametitle}{maersk}[1][left]
+  {
+  \begin{picture}(0,0)
+      \put(-25,2){%
+        \color{beamer@maersk1}\rule{0.98\paperwidth}{2.5mm}\kern-1mm
+      }
+    \end{picture}
+  
+    % \usebackgroundtemplate{
+    %   \tikz[overlay,remember picture] 
+    %   \node[opacity=1.0, at=(current page.north east),anchor=north east,inner sep=0pt] {
+    %     \includegraphics[]{maerskheader2}};
+    % }
+
+    \nointerlineskip%
+    \@tempdima=\textwidth%
+    \advance\@tempdima by 1.6cm%
+    \hskip\beamer@leftmargin\hskip+4.5cm%
+    \begin{beamercolorbox}[sep=0.3cm,#1,wd=\the\@tempdima]{frametitle}
+      \usebeamerfont{frametitle}%
+      \vbox{}\vskip-1cm%
+      \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+      \strut\insertframetitle\strut\par%
+      {%
+        \ifx\insertframesubtitle\@empty%
+        \else%
+        {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+        \fi
+      }%
+      \vskip-1ex%
+      \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+    \end{beamercolorbox}%
+    
+  }
+  
+\setbeamertemplate{frametitle}[maersk][left]%%[\KULIFEframetitle@align]
+\defbeamertemplate*{footline}{my footline}
+{
+  \ifnum \insertframenumber=0
+  %% \leavevmode%
+  %% \hbox{%
+  % \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,center]{}%
+  %   %   empty environment to raise height
+  % \end{beamercolorbox}}%
+      %%}%
+      %%  \vskip0pt%
+  \else
+
+    \if@doFooter%    
+    \tikz[overlay,remember picture] 
+    \node[opacity=1.0, at=(current page.south east),anchor=south east,inner sep=10pt] {
+    % TODO
+%      \includegraphics[width=10em]{maerskfooter}
+      };    
+    \fi%
+
+%%      \leavevmode%
+      \vspace*{-0.5em}
+      \vbox{
+        \hspace*{\fill}
+        \color{beamer@maersk2}\insertframenumber/ \inserttotalframenumber
+        \hspace*{1em}
+       % \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+       %   \usebeamerfont{title in head/foot}\insertshorttitle
+       % \end{beamercolorbox}%
+       }
+      \vskip20pt%
+%%      \hskip10pt
+    \fi
+}
+%% \setbeamertemplate{footline}[frame number]
+
+\setbeamertemplate{footline}[my footline]
+\makeatletter  
+\makeatother
+
+\usefonttheme{default}
+\usecolortheme{default}
+\useinnertheme{default}
+\useoutertheme{default}
+
+\mode
+<all>
