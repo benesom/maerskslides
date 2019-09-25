@@ -1,7 +1,7 @@
 # maerskslides
 Document class for slides with Maersk header
 
-#Installation for Mac users
+# Installation for Mac users
 1. Install Latex distribution (I use TeX Live)
 2. Clone/download repo
 3. Find TeX home directory with *kpsewhich --var-value TEXMFLOCAL* 
