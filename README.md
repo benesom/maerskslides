@@ -8,4 +8,4 @@ Document class for Latex slides with Maersk header. The maerskslides class is ba
 4. cd into TeX home directory and then cd into *tex/latex/local/* or alternatively directly use *cd ~ | cd $(kpsewhich --var-value TEXMFLOCAL)/tex/latex/local*
 5. Copy maerskslides/ into directory
 6. Run texhash to refresh TeX database
-7. Create new .tex file and use slides with *\documentclass{maerskslides}*
+7. The class can be then used with *\\documentclass{maerskslides}*
