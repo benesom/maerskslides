@@ -22,16 +22,16 @@
 \mode<presentation>
 \usecolortheme{maersk}
 
-\if@doTitleBackground%
-\setbeamertemplate{background}{
-  \ifnum\c@framenumber=0%
-  \tikz[overlay,remember
-  picture]\node[opacity=0.5]at (current page.center)
-  {\includegraphics[height=0.89\paperheight]{terminal}};
-  \else%  
-  \fi%
-}
-\fi
+% \if@doTitleBackground%
+% \setbeamertemplate{background}{
+%   \ifnum\c@framenumber=0%
+%   \tikz[overlay,remember
+%   picture]\node[opacity=0.5]at (current page.center)
+%   {\includegraphics[height=0.89\paperheight]{terminal}};
+%   \else%  
+%   \fi%
+% }
+% \fi
 
  \newcommand{\watermark}[3]{\setbeamertemplate{background}{
    \tikz[overlay,remember

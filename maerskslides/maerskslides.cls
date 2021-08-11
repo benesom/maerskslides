@@ -38,7 +38,7 @@
 
 \newtheorem{thm}{Theorem.}
 \newtheorem{prop}{Proposition.}
-\theoremstyle{definition}
+\theoremstyle{definition} 
 \newtheorem{defn}[thm]{Definition.}
 \newtheorem{exa}[thm]{Example}
 
@@ -115,7 +115,7 @@
 
 
 
-\usepackage{tikz}
+%\usepackage{tikz}
 
 
 
@@ -125,7 +125,7 @@
 \title{Some title}
 %\subtitle{An overview of container logistics and operations research at Maersk}
 
-\usepackage{beamerthememaersk}
+\usepackage[nofooter]{beamerthememaersk}
 \usepackage{beamercolorthememaersk}
 
 \usefonttheme{serif}
