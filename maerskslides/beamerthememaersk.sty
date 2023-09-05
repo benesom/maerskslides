@@ -17,6 +17,11 @@
 \@doFootertrue
 \DeclareOption{nofooter}{\@doFooterfalse}
 
+\newif\if@doLogo
+\@doLogotrue
+\DeclareOption{nologo}{\@doLogofalse}
+
+
 \ProcessOptions
 
 \mode<presentation>
@@ -62,10 +67,13 @@
     \put(-25,100){%
       \color{beamer@maersk1}\rule{0.98\paperwidth}{2.5mm}\kern-1mm
     }
+    \if@doLogo
      \put(200,60){%
      % TODO
       \includegraphics[scale=0.3]{maerskheader}
-     }
+      }
+     \fi
+     
      \put(150,-100){%
        {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic}
      }

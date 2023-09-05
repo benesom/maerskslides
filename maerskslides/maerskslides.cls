@@ -33,7 +33,7 @@
 \usepackage{url}
 \usepackage{changepage}
 \usepackage{amsthm}
-
+\usepackage{mleftright}
 
 
 \newtheorem{thm}{Theorem.}
@@ -53,7 +53,7 @@
 \newcommand{\cov}{\text{Cov}}
 %\newcommand{\log}{\text{log }} 
 \newcommand{\cor}{\ensuremath{\mathbb{C}\text{or}}} 
-\newcommand{\E}{\text{E}}
+% \newcommand{\E}{\text{E}}
 \newcommand{\pr}{\ensuremath{\mathbb{P}}} 
 \newcommand{\from}{\leftarrow} 
 \newcommand{\To}[2]{\ensuremath{#1\!\to\!#2}}
@@ -69,8 +69,8 @@
 \newcommand{\seq}[1]{\left<#1\right>} 
 \renewcommand{\subset}{\subseteq}  
 \renewcommand{\supset}{\supseteq} 
-\newcommand{\argmax}{\operatorname{arg\,\max}} 
-\newcommand{\argmin}{\operatorname{arg\,\min}} 
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
 \newcommand{\sgn}{\operatorname{sgn}} 
 \newcommand{\mvec}{\operatorname{vec}} 
 \newcommand{\logit}{\operatorname{logit}} 
@@ -80,11 +80,17 @@
 \newcommand{\bias}{\operatorname{bias}} 
 \newcommand{\rank}{\operatorname{rank}}
 
+\newcommand{\Cov}[1]{\text{Cov} \mleft[#1 \mright]}
+\newcommand{\Var}[1]{\text{Var} \mleft[#1 \mright]}
+\newcommand{\E}[1]{\mathbb{E} \mleft[#1 \mright]}
+
+
 \newcommand{\Question}{\textcolor{red}{Question: }}
 \newcommand{\Assumptions}{\textbf{Assumptions: }}
 \newcommand{\Objective}{\textbf{Objective: }}
 
 \renewcommand{\newline}{\vspace{1em}} 
+
 
 \makeatletter
  \def\mathcolor#1#{\@mathcolor{#1}}
@@ -114,6 +120,37 @@
 ,caption= ,captionpos=b}
 
 
+% macro to repeat frametile on consecutive slides
+\def\beamer@checkframetitle{%
+\begingroup
+  \edef\temp{%
+    \endgroup
+    \noexpand\frametitle
+    [\unexpanded\expandafter{\beamer@savedshortframetitle}]%
+    {\unexpanded\expandafter{\beamer@savedframetitle}}%
+  }
+\temp
+\@ifnextchar\bgroup\beamer@inlineframetitle{}}
+
+\long\def\beamer@@frametitle[#1]#2{%
+  \beamer@ifempty{#2}{}{%
+    \gdef\insertframetitle{{#2\ifnum\beamer@autobreakcount>0\relax{}\space\usebeamertemplate*{frametitle
+continuation}\fi}}%
+  \gdef\beamer@frametitle{#2}%
+  \gdef\beamer@shortframetitle{#1}%
+  \global\let\beamer@savedshortframetitle\beamer@shortframetitle
+    \global\let\beamer@savedframetitle\beamer@frametitle
+}%
+}
+  \global\let\beamer@savedshortframetitle\@empty
+    \global\let\beamer@savedframetitle\@empty
+
+
+
+
+\newcommand{\noframetitle}{\frametitle{\\}}
+
+
 
 %\usepackage{tikz}
 
@@ -123,7 +160,7 @@
 
 \date{\today}
 \title{Some title}
-%\subtitle{An overview of container logistics and operations research at Maersk}
+
 
 \usepackage[nofooter]{beamerthememaersk}
 \usepackage{beamercolorthememaersk}
