@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{maerskslides}[2014/08/16 Example LaTeX class]
  
-\LoadClass[table,onlymath,10pt]{beamer}
+\LoadClass[table,onlymath,10pt, aspectratio=1610]{beamer}
 \RequirePackage{xcolor}
 
 \usepackage{etex}
@@ -28,7 +28,6 @@
 \usepackage{fancyvrb}
 \usepackage{verbatim}
 \usepackage[english]{babel}
-
 \usepackage{xspace}
 \usepackage{url}
 \usepackage{changepage}
@@ -121,29 +120,29 @@
 
 
 % macro to repeat frametile on consecutive slides
-\def\beamer@checkframetitle{%
-\begingroup
-  \edef\temp{%
-    \endgroup
-    \noexpand\frametitle
-    [\unexpanded\expandafter{\beamer@savedshortframetitle}]%
-    {\unexpanded\expandafter{\beamer@savedframetitle}}%
-  }
-\temp
-\@ifnextchar\bgroup\beamer@inlineframetitle{}}
+% \def\beamer@checkframetitle{%
+% \begingroup
+%   \edef\temp{%
+%     \endgroup
+%     \noexpand\frametitle
+%     [\unexpanded\expandafter{\beamer@savedshortframetitle}]%
+%     {\unexpanded\expandafter{\beamer@savedframetitle}}%
+%   }
+% \temp
+% \@ifnextchar\bgroup\beamer@inlineframetitle{}}
 
-\long\def\beamer@@frametitle[#1]#2{%
-  \beamer@ifempty{#2}{}{%
-    \gdef\insertframetitle{{#2\ifnum\beamer@autobreakcount>0\relax{}\space\usebeamertemplate*{frametitle
-continuation}\fi}}%
-  \gdef\beamer@frametitle{#2}%
-  \gdef\beamer@shortframetitle{#1}%
-  \global\let\beamer@savedshortframetitle\beamer@shortframetitle
-    \global\let\beamer@savedframetitle\beamer@frametitle
-}%
-}
-  \global\let\beamer@savedshortframetitle\@empty
-    \global\let\beamer@savedframetitle\@empty
+% \long\def\beamer@@frametitle[#1]#2{%
+%   \beamer@ifempty{#2}{}{%
+%     \gdef\insertframetitle{{#2\ifnum\beamer@autobreakcount>0\relax{}\space\usebeamertemplate*{frametitle
+% continuation}\fi}}%
+%   \gdef\beamer@frametitle{#2}%
+%   \gdef\beamer@shortframetitle{#1}%
+%   \global\let\beamer@savedshortframetitle\beamer@shortframetitle
+%     \global\let\beamer@savedframetitle\beamer@frametitle
+% }%
+% }
+%   \global\let\beamer@savedshortframetitle\@empty
+%     \global\let\beamer@savedframetitle\@empty
 
 
 
