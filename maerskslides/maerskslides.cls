@@ -28,7 +28,7 @@
 \usepackage{fancyvrb}
 \usepackage{verbatim}
 \usepackage[english]{babel}
-\usepackage{hyperref}
+
 \usepackage{xspace}
 \usepackage{url}
 \usepackage{changepage}
